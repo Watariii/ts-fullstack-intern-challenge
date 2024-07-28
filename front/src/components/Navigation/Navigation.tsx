@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom"
 
 function Navigation() {
-  return(
-  <>
-    <nav className="navigation">
-      <NavLink to="/" className="navigation__link navigation__link_active">Все котики</NavLink>
-      <NavLink to="/likes" className="navigation__link">Любимые котики</NavLink>
-    </nav>
-  </>
+  return (
+    <>
+      <nav className="navigation">
+        <NavLink to="/" className={({ isActive }) =>
+          `navigation__link ${isActive ? "active" : ""}`}>Все котики</NavLink>
+        <NavLink to="/likes" className={({ isActive }) =>
+          `navigation__link ${isActive ? "active" : ""}`}>Любимые котики</NavLink>
+      </nav>
+    </>
   )
 }
 

@@ -1,15 +1,35 @@
 import Header from "../Header/Header"
 import CardList from "../CardList/CardList"
-import Preloader from "../Preloader/Preloader"
+import { useLocation } from "react-router-dom";
 
-function LikesCatCards() {
+type LikesCatCardsProps = {
+  saveCardsArray: {
+    id: string,
+    url: string
+  }[],
+
+  handleSaveCard: any,
+  checkSavingCard: any,
+}
+
+
+function LikesCatCards({saveCardsArray, handleSaveCard, checkSavingCard }: LikesCatCardsProps) {
+  const location = useLocation();
+
+  // useEffect(() => {
+  //   setRenderSavedCardsArray(saveCardsArray);
+  // }, [location])
 
   return (
     <>
       <Header />
       <main className="content">
-        <CardList />
-        <Preloader />
+        <CardList
+          cardsArray={saveCardsArray}
+          type="likes"
+          handleSaveCard={handleSaveCard}
+          checkSavingCard={checkSavingCard}
+          />
       </main>
     </>
   )
