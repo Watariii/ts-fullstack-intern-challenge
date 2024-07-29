@@ -1,6 +1,5 @@
 import Header from "../Header/Header"
 import CardList from "../CardList/CardList"
-import { useLocation } from "react-router-dom";
 
 type LikesCatCardsProps = {
   saveCardsArray: {
@@ -14,11 +13,6 @@ type LikesCatCardsProps = {
 
 
 function LikesCatCards({saveCardsArray, handleSaveCard, checkSavingCard }: LikesCatCardsProps) {
-  const location = useLocation();
-
-  // useEffect(() => {
-  //   setRenderSavedCardsArray(saveCardsArray);
-  // }, [location])
 
   return (
     <>
@@ -26,7 +20,6 @@ function LikesCatCards({saveCardsArray, handleSaveCard, checkSavingCard }: Likes
       <main className="content">
         <CardList
           cardsArray={saveCardsArray}
-          type="likes"
           handleSaveCard={handleSaveCard}
           checkSavingCard={checkSavingCard}
           />

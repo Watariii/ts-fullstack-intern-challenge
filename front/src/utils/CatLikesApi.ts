@@ -1,5 +1,5 @@
 const apiConfig = {
-  url: "http://localhost:3000/likes",
+  url: "http://localhost:8080/api/likes",
   headers: {
     "content-type": "application/json",
   },

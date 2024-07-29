@@ -24,7 +24,6 @@ function CatCards({cardsArray, handleSaveCard, isLoading, textPreloader,checkSav
       <main className="content">
         <CardList
           cardsArray={cardsArray}
-          type="all"
           handleSaveCard={handleSaveCard}
           checkSavingCard={checkSavingCard} />
         <Preloader

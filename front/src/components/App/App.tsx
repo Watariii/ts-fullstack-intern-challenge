@@ -1,10 +1,10 @@
-import { Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 
 import CatCards from "../CatCards/CatCards";
 import LikesCatCards from '../LikesCatCards/LikesCatCards';
 import { useEffect, useState } from "react"
-import { getSavedCards, saveCard, deleteCard } from "../utils/CatLikesApi"
-import { getCards } from "../utils/CatsApi"
+import { getSavedCards, saveCard, deleteCard } from "../../utils/CatLikesApi"
+import { getCards } from "../../utils/CatsApi"
 import Card from "../Card/Card";
 
 type Card = {
@@ -12,7 +12,6 @@ type Card = {
   url: string
 }
 function App() {
-  const location = useLocation();
 
   const [isLoading, setloading] = useState(false);
   const [textPreloader, setTextPreloader] = useState("");
@@ -55,11 +54,9 @@ function App() {
       if (cardsArray.length) {
         setCardsArray(cardsArray.concat(array));
         setloading(false);
-        // console.log(cardsArray, "заполнен")
       } else {
         setCardsArray(array)
         setloading(false)
-        // console.log(cardsArray, "0")
       }
     })
   };
@@ -73,7 +70,7 @@ function App() {
         setSaveCardsArray(cards)
       })
 
-  }, [location])
+  }, [])
 
 
   function checkSavingCard(card: Card) {
@@ -99,7 +96,7 @@ function App() {
   function likeCard(newCard: Card) {
     saveCard(newCard)
       .then((newCard) => {
-        setSaveCardsArray(saveCardsArray.concat(newCard));
+        setSaveCardsArray(saveCardsArray.concat(newCard).reverse());
       })
       .catch((err) => {
         console.log(err);
@@ -108,11 +105,10 @@ function App() {
 
   function deleteSavedCard(idCard: string) {
     deleteCard(idCard)
-      .then((idCard) => {
-        const array =
-          saveCardsArray.filter((item) => item.id !== idCard);
-        console.log(array)
-
+      .then(() => {
+        setSaveCardsArray(
+          saveCardsArray.filter((item) => item.id !== idCard)
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -133,11 +129,9 @@ function App() {
         path='/likes'
         element={<LikesCatCards
           saveCardsArray={saveCardsArray}
-          // renderSavedCardsArray={renderSavedCardsArray}
           handleSaveCard={handleSaveCard}
           checkSavingCard={checkSavingCard}
-        // setRenderSavedCardsArray={setRenderSavedCardsArray} 
-        />} />
+          />} />
     </Routes>
   )
 }

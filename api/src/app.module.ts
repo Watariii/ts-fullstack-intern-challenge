@@ -7,10 +7,10 @@ import { CardsModule } from './card/cards.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'cat-pinterest-api-pg',
       port: 5432,
       username: 'postgres',
-      password: '22',
+      password: '1',
       database: 'support_lk_db',
       entities: [Card],
       synchronize: true,

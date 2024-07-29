@@ -6,13 +6,11 @@ type CardProps = {
     url: string
   },
 
-  type: "all" | "likes",
-
   handleSaveCard: any,
   checkSavingCard: any,
 }
 
-function Card({ card, type, handleSaveCard, checkSavingCard }: CardProps) {
+function Card({ card, handleSaveCard, checkSavingCard }: CardProps) {
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {

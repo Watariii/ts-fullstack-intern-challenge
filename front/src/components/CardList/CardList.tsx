@@ -6,13 +6,11 @@ type CardListProps = {
     url: string
   }[],
 
-  type: "all" | "likes",
-
   handleSaveCard: any,
   checkSavingCard: any,
 }
 
-function CardList({cardsArray, type, handleSaveCard, checkSavingCard }: CardListProps) {
+function CardList({cardsArray, handleSaveCard, checkSavingCard }: CardListProps) {
 
   return (
     <section className="card-list">
@@ -23,7 +21,6 @@ function CardList({cardsArray, type, handleSaveCard, checkSavingCard }: CardList
             card={cardData}
             handleSaveCard={handleSaveCard}
             checkSavingCard={checkSavingCard}
-            type={type}
           />
         ))}
       </ul>
